@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: bisque;
+        }
+        table, td, th{
+            border:1px solid whitesmoke;
+            text-align: center;
+        }
+        #table{
+            border-collapse: collapse;
+            width: 70%;
+        }
+        th, td{
+            padding: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <script>
+        
+        function saveFunction(){
+            var name1=document.getElementById("name").value;
+            var phone1=document.getElementById("phone").value;
+            var email1=document.getElementById("email").value;
+            var address1=document.getElementById("address").value;
+
+            var radiovalue="";
+                var radio=document.getElementsByName('gender');
+                for(i = 0; i < radio.length; i++) { 
+                    if(radio[i].checked) 
+                    radiovalue=radio[i].value; 
+                } 
+                var checkvalue="";
+                var check=document.getElementsByName('subject');
+                for(i = 0; i < check.length; i++) { 
+                    if(check[i].checked) 
+                    checkvalue+=check[i].value; 
+                } 
+
+            var table=document.getElementById("table");
+            var row=document.createElement("tr");
+            table.appendChild(row);
+            
+            var newItem=document.createElement("td");
+            var resault1=document.createTextNode(name1);
+            newItem.appendChild(resault1);
+            row.appendChild(newItem);
+
+            var newItem1=document.createElement("td");
+            var resault2=document.createTextNode(phone1);
+            newItem1.appendChild(resault2);
+            row.appendChild(newItem1);
+
+            var newItem2=document.createElement("td");
+            var resault3=document.createTextNode(email1);
+            newItem2.appendChild(resault3);
+            row.appendChild(newItem2);
+
+            var newItem3=document.createElement("td");
+            var resault4=document.createTextNode(address1);
+            newItem3.appendChild(resault4);
+            row.appendChild(newItem3);
+
+            var newItem4=document.createElement("td");
+            var resault5=document.createTextNode(radiovalue);
+            newItem4.appendChild(resault5);
+            row.appendChild(newItem4);
+
+            var newItem5=document.createElement("td");
+            var resault6=document.createTextNode(checkvalue);
+            newItem5.appendChild(resault6);
+            row.appendChild(newItem5);
+
+        }
+            
+    </script>
+        <input type="text" id="name" placeholder="Name"><br><br>
+        <input type="text" id="phone" placeholder="Phone"><br><br>
+        <input type="text" id="email" placeholder="Email"><br><br>
+        <textarea id="address" placeholder="Address"></textarea><br><br>
+        <input type="radio" name="gender" value="male">
+        <label id="male">Male</label>
+        <input type="radio" name="gender" value="female">
+        <label id="female">Female</label><br><br>
+        <input type="checkbox" name="subject" value="501">
+        <label id="subject1">501</label>
+        <input type="checkbox" name="subject" value="502">
+        <label id="subject1">502</label>
+        <input type="checkbox" name="subject" value="503">
+        <label id="subject1">503</label><br><br>
+        <button type="submit" onclick="saveFunction()">Save</button><br><br>
+        <table id="table">
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Gender</th>
+                <th>Language</th>
+            </tr>
+        </table>
+</body>
+</html>
