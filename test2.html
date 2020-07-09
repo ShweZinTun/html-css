@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function addFunction(){
+            var num1=parseInt(document.getElementById("fNum").value);
+            var num2=parseInt(document.getElementById("sNum").value);
+            var i;
+            i=num1+num2;
+            document.getElementById("num").innerHTML="The result is "+i;
+        } 
+        function subFunction(){
+            var num1=parseInt(document.getElementById("fNum").value);
+            var num2=parseInt(document.getElementById("sNum").value);
+            var i;
+            i=num1-num2;
+            document.getElementById("num").innerHTML="The result is "+i;
+        } 
+        function mulFunction(){
+            var num1=parseInt(document.getElementById("fNum").value);
+            var num2=parseInt(document.getElementById("sNum").value);
+            var i;
+            i=num1*num2;
+            document.getElementById("num").innerHTML="The result is "+i;
+        } 
+        function divFunction(){
+            var num1=parseInt(document.getElementById("fNum").value);
+            var num2=parseInt(document.getElementById("sNum").value);
+            var i;
+            i=num1/num2;
+            document.getElementById("num").innerHTML="The result is "+i;
+        } 
+    </script>
+    <label>Number 1:</label>
+    <input type="text" id="fNum"><br><br>
+    <label>Number 2:</label>
+    <input type="text" id="sNum"><br><br>
+    <button type="submit" onclick="addFunction()">+</button>
+    <button type="submit" onclick="subFunction()">-</button>
+    <button type="submit" onclick="mulFunction()">*</button>
+    <button type="submit" onclick="divFunction()">/</button>
+    <p id="num"></p>
+</body>
+</html>
