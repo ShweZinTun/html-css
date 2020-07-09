@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function teskFunction(){
+            var teskList=[];
+            var name=document.getElementById("name").value;
+            var teskName=document.createElement("p");
+            var button=document.createElement("button");
+            button.setAttribute("class", "fa fa-remove");
+            button.style.float="right";
+            button.style.color="red";
+            teskName.style.border="1px solid black";
+            teskName.style.height="30px";
+            teskName.style.width="500px";
+            teskName.appendChild(document.createTextNode(name));
+            var input=document.getElementById("result");
+            input.appendChild(teskName);
+            teskName.appendChild(button);
+            button.addEventListener("click", myFunction);
+            function myFunction(){
+                input.removeChild(teskName);
+            }
+        }
+    </script>
+    <label>Task Name</label>
+    <input type="text" id="name"><br><br>
+    <button type="sumit" onclick="teskFunction()">Add</button>
+    <p>Tesk List</p>
+    <section id="result">
+
+    </section>
+</body>
+</html>
