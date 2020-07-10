@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+    <style>
+        body{
+            font-size: 18px;
+        }
+        h1{
+            overflow: hidden;
+        }
+        .page{
+            width: 100%;
+            background-color: aliceblue;
+            display: flex;
+        }
+        .left{
+            position: relative;
+            float: left;
+            width: 800px;
+        }
+        .budget{
+            position:relative;
+            background-color: whitesmoke;
+            border:2px solid red;
+            padding:20px;
+            width: 500px;
+            height: auto;
+        }
+        .expense{
+            position: relative;
+            background-color: whitesmoke;
+            border:2px solid green;
+            padding: 20px;
+            margin-top: 50px;
+            width: 500px;
+            height:auto;
+        }
+        .right{
+            position: relative;
+            float: right;
+            width: 800px;
+        }
+        .result{
+            display: flex;
+        }
+        .res{
+            display: flex;
+        }
+        .resultTable{
+            text-align: center;
+            width: 100%; 
+            position: relative;
+            border:1px solid green;
+            margin-bottom: 50px;
+        }
+        #edtBtn{
+            border:none;
+        }
+        #delBtn{
+            border:none;
+        }
+
+    </style>
+    <script>
+        var newinput=0;
+        
+        var expInput=0;
+        var totexp=0;
+        var balance=0;
+        $(document).ready(function(){
+            $("#calculate").click(function(){
+                newinput +=parseInt($("#budgetinput").val());
+                $("#bgd").html("<label><h3>$"+newinput+"</h3></label>");
+
+                balance = newinput-totexp;
+                $("#balance").html("<h3>$"+balance+"</h3>");
+            });
+            $("#addExpense").click(function(){
+                var name=$("#nameinput").val();
+                expInput=parseInt($("#amountinput").val());
+
+                totexp+=expInput;
+                $("#credit").html("<lable>$"+totexp+"</lable>");
+
+                balance = newinput-totexp;
+                $("#balance").html("<h3>$"+balance+"</h3>");
+                $("#expList").append(
+                        "<tr>"
+                            +"<td>"+name+"</td>"
+                            +"<td>"+expInput+"</td>"+
+                            "<td><button type='button' id='edtBtn'><i class='fa fa-edit' style='font-size:24px;color:red'></i></button><button type='button' id='delBtn'><i class='fa fa-trash' style='font-size:24px;color:red'></i></button></td></tr>"
+                    );
+
+            });
+            
+        });
+    </script>
+               
+                  
+</head>
+<body>
+    <h1>BUTGET APP</h1>
+    <div class="page">
+        <div class="left">
+            <div class="budget">
+                <label id="enterBudget" style="margin-top: 10px;">Please Enter Your Budget</label><br>
+                <input type="text" id="budgetinput" name="budget" style="margin-top: 10px; width: 300px; height: 20px;"><br>
+                <button type="button" name="calBudget" id="calculate" style="margin-top: 10px; width:auto">Calculate</button>
+            </div>
+            <div class="expense">
+                <label id="expName" style="margin-top: 10px;">Please Enter Your Name</label><br>
+                <input type="text" id="nameinput" name="expense" style="margin-top: 10px; width:300px; height: 20px;"><br>
+                <label id="expAmount" style="margin-top: 10px;">Please Enter Your Amount</label><br>
+                <input type="text" id="amountinput" name="expense" style="margin-top: 10px; width:300px; height: 20px;"><br>
+                <button type="button" name="addExpense" id="addExpense" style="margin-top: 10px; width:auto">Add Expense</button>
+            </div>
+        </div>
+        <div class="right">
+            <div class="result">
+                <div class="list">
+                    <p style="font-size: 24px; font-style:bold;">BUDGET</p>
+                    <i class="fa fa-money" style="font-size:48px;color:blue"></i>
+                    <p id="bgd"></p>
+                </div>
+                <div class="list" style="padding-left: 50px;">
+                    <p style="font-size: 24px; font-style:bold;">EXPENSES</p>
+                    <i class="fa fa-credit-card" style="font-size:48px;color:blue"></i>
+                    <p id="credit"></p>
+                </div>
+                <div class="list" style="padding-left: 50px;">
+                    <p style="font-size: 24px; font-style:bold;">BALANCE</p>
+                    <i class="fa fa-dollar" style="font-size:48px;color:blue"></i>
+                    <p id="balance"></p>
+                </div>
+            </div>
+            <table class="resultTable">
+                <tr>
+                    <th style="padding-left: 5px;">Expense Title</th>
+                    <th>Expense Value</th>
+                    <th> </th>
+                </tr>
+                <tbody id="expList">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
