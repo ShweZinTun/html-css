@@ -1,0 +1,183 @@
+
+mysql> select * from Team;
++--------+-------------+-------------+
+| teamID | name        | foundeddate |
++--------+-------------+-------------+
+|      1 | ManU        | 1880-06-20  |
+|      2 | Liverpool   | 1892-07-15  |
+|      3 | Everton     | 1992-02-20  |
+|      4 | Chelsea     | 1905-03-10  |
+|      5 | Arsenal     | 1886-09-10  |
+|      6 | Real Madrid | 1902-03-06  |
+|      7 | Barcelona   | 1899-11-29  |
+|      8 | Juventus    | 1897-11-01  |
+|      9 | La Liga     | 1929-02-02  |
+|     10 | Man City    | 1880-02-04  |
++--------+-------------+-------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from Player;
++----------+-------------------+---------+------+--------+--------+--------+
+| playerID | name              | jersyno | age  | salary | teamId | height |
++----------+-------------------+---------+------+--------+--------+--------+
+|        1 | Cristiano Ronaldo |       7 |   35 | 700000 |      6 | 6.5    |
+|        2 | Paul Pogba        |      11 |   39 | 800000 |      1 | 5.5    |
+|        3 | Bruno Fernandes   |      17 |   36 | 700000 |      1 | 5.8    |
+|        4 | Marcus Rashford   |      71 |   33 | 600000 |      1 | 5.8    |
+|        5 | Mason Greenwood   |      21 |   35 | 800000 |      1 | 6.1    |
+|        6 | Daniel James      |      15 |   38 | 800000 |      2 | 6.0    |
+|        7 | Angel Gomes       |      19 |   32 | 800000 |      2 | 5.7    |
+|        8 | Anthony Martial   |      23 |   35 | 500000 |      2 | 5.9    |
+|        9 | Brandon Williams  |      25 |   35 | 500000 |      2 | 5.6    |
+|       10 | Scott McTominay   |      15 |   36 | 900000 |      2 | 5.9    |
+|       11 | Andreas Pereira   |       7 |   37 | 900000 |      3 | 5.9    |
+|       12 | Nemanja Matic     |       7 |   30 | 900000 |      3 | 6.0    |
+|       13 | Luke Shaw         |      99 |   22 | 800000 |      3 | 6.0    |
+|       14 | Jesse Lingard     |      29 |   25 | 800000 |      3 | 5.9    |
+|       15 | Hector            |      24 |   27 | 600000 |      3 | 5.8    |
+|       16 | Lucas             |      72 |   27 | 700000 |      4 | 5.8    |
+|       17 | Leno              |      71 |   25 | 700000 |      4 | 5.7    |
+|       18 | Sead              |      55 |   24 | 700000 |      4 | 5.8    |
+|       19 | Reiss             |      53 |   24 | 700000 |      4 | 5.8    |
+|       20 | Matteo            |      63 |   25 | 700000 |      4 | 5.9    |
+|       21 | Joe Willock       |      61 |   25 | 700000 |      5 | 5.9    |
+|       22 | Sokratis          |      43 |   26 | 800000 |      5 | 5.9    |
+|       23 | Ainsley           |       3 |   26 | 800000 |      5 | 5.9    |
+|       24 | Ozil              |       4 |   26 | 800000 |      5 | 5.9    |
+|       25 | Zech              |       5 |   26 | 800000 |      5 | 5.9    |
+|       26 | Matthew           |       6 |   26 | 800000 |      6 | 5.9    |
+|       27 | Tyreece           |       7 |   26 | 800000 |      6 | 5.9    |
+|       28 | Lee Grant         |       8 |   27 | 800000 |      7 | 5.9    |
+|       29 | Timothy           |       9 |   27 | 800000 |      8 | 5.9    |
+|       30 | Marcos Rojo       |      10 |   27 | 800000 |      9 | 5.9    |
+|       31 | Tahith Chong      |      11 |   27 | 800000 |     10 | 5.9    |
++----------+-------------------+---------+------+--------+--------+--------+
+31 rows in set (0.00 sec)
+
+mysql> select * from Team where teamID=1;
++--------+------+-------------+
+| teamID | name | foundeddate |
++--------+------+-------------+
+|      1 | ManU | 1880-06-20  |
++--------+------+-------------+
+1 row in set (0.00 sec)
+
+mysql> select * from Team where teamID=2;
++--------+-----------+-------------+
+| teamID | name      | foundeddate |
++--------+-----------+-------------+
+|      2 | Liverpool | 1892-07-15  |
++--------+-----------+-------------+
+1 row in set (0.00 sec)
+
+mysql> select * from Player where salary>500000;
++----------+-------------------+---------+------+--------+--------+--------+
+| playerID | name              | jersyno | age  | salary | teamId | height |
++----------+-------------------+---------+------+--------+--------+--------+
+|        1 | Cristiano Ronaldo |       7 |   35 | 700000 |      6 | 6.5    |
+|        2 | Paul Pogba        |      11 |   39 | 800000 |      1 | 5.5    |
+|        3 | Bruno Fernandes   |      17 |   36 | 700000 |      1 | 5.8    |
+|        4 | Marcus Rashford   |      71 |   33 | 600000 |      1 | 5.8    |
+|        5 | Mason Greenwood   |      21 |   35 | 800000 |      1 | 6.1    |
+|        6 | Daniel James      |      15 |   38 | 800000 |      2 | 6.0    |
+|        7 | Angel Gomes       |      19 |   32 | 800000 |      2 | 5.7    |
+|       10 | Scott McTominay   |      15 |   36 | 900000 |      2 | 5.9    |
+|       11 | Andreas Pereira   |       7 |   37 | 900000 |      3 | 5.9    |
+|       12 | Nemanja Matic     |       7 |   30 | 900000 |      3 | 6.0    |
+|       13 | Luke Shaw         |      99 |   22 | 800000 |      3 | 6.0    |
+|       14 | Jesse Lingard     |      29 |   25 | 800000 |      3 | 5.9    |
+|       15 | Hector            |      24 |   27 | 600000 |      3 | 5.8    |
+|       16 | Lucas             |      72 |   27 | 700000 |      4 | 5.8    |
+|       17 | Leno              |      71 |   25 | 700000 |      4 | 5.7    |
+|       18 | Sead              |      55 |   24 | 700000 |      4 | 5.8    |
+|       19 | Reiss             |      53 |   24 | 700000 |      4 | 5.8    |
+|       20 | Matteo            |      63 |   25 | 700000 |      4 | 5.9    |
+|       21 | Joe Willock       |      61 |   25 | 700000 |      5 | 5.9    |
+|       22 | Sokratis          |      43 |   26 | 800000 |      5 | 5.9    |
+|       23 | Ainsley           |       3 |   26 | 800000 |      5 | 5.9    |
+|       24 | Ozil              |       4 |   26 | 800000 |      5 | 5.9    |
+|       25 | Zech              |       5 |   26 | 800000 |      5 | 5.9    |
+|       26 | Matthew           |       6 |   26 | 800000 |      6 | 5.9    |
+|       27 | Tyreece           |       7 |   26 | 800000 |      6 | 5.9    |
+|       28 | Lee Grant         |       8 |   27 | 800000 |      7 | 5.9    |
+|       29 | Timothy           |       9 |   27 | 800000 |      8 | 5.9    |
+|       30 | Marcos Rojo       |      10 |   27 | 800000 |      9 | 5.9    |
+|       31 | Tahith Chong      |      11 |   27 | 800000 |     10 | 5.9    |
++----------+-------------------+---------+------+--------+--------+--------+
+29 rows in set (0.11 sec)
+
+mysql> select name,(select sum(salary) from Player where Team.teamID=Player.teamId) as Salary from Team;
++-------------+---------+
+| name        | Salary  |
++-------------+---------+
+| ManU        | 2900000 |
+| Liverpool   | 3500000 |
+| Everton     | 4000000 |
+| Chelsea     | 3500000 |
+| Arsenal     | 3900000 |
+| Real Madrid | 2300000 |
+| Barcelona   |  800000 |
+| Juventus    |  800000 |
+| La Liga     |  800000 |
+| Man City    |  800000 |
++-------------+---------+
+10 rows in set (0.41 sec)
+
+mysql> select * from Player where height<5;
+Empty set (0.03 sec)
+
+mysql> select name,(select avg(salary) from Player where Team.teamID=Player.teamId) as Avg from Team;
++-------------+-------------+
+| name        | Avg         |
++-------------+-------------+
+| ManU        | 725000.0000 |
+| Liverpool   | 700000.0000 |
+| Everton     | 800000.0000 |
+| Chelsea     | 700000.0000 |
+| Arsenal     | 780000.0000 |
+| Real Madrid | 766666.6667 |
+| Barcelona   | 800000.0000 |
+| Juventus    | 800000.0000 |
+| La Liga     | 800000.0000 |
+| Man City    | 800000.0000 |
++-------------+-------------+
+10 rows in set (0.10 sec)
+
+
+mysql> select name,salary from Player where salary in(select min(salary)from Player);
++------------------+--------+
+| name             | salary |
++------------------+--------+
+| Anthony Martial  | 500000 |
+| Brandon Williams | 500000 |
++------------------+--------+
+2 rows in set (0.17 sec)
+
+mysql> select name,salary from Player where salary in(select max(salary)from Player);
++-----------------+--------+
+| name            | salary |
++-----------------+--------+
+| Scott McTominay | 900000 |
+| Andreas Pereira | 900000 |
+| Nemanja Matic   | 900000 |
++-----------------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from Player where age>30 and salary>200000;
++----------+-------------------+---------+------+--------+--------+--------+
+| playerID | name              | jersyno | age  | salary | teamId | height |
++----------+-------------------+---------+------+--------+--------+--------+
+|        1 | Cristiano Ronaldo |       7 |   35 | 700000 |      6 | 6.5    |
+|        2 | Paul Pogba        |      11 |   39 | 800000 |      1 | 5.5    |
+|        3 | Bruno Fernandes   |      17 |   36 | 700000 |      1 | 5.8    |
+|        4 | Marcus Rashford   |      71 |   33 | 600000 |      1 | 5.8    |
+|        5 | Mason Greenwood   |      21 |   35 | 800000 |      1 | 6.1    |
+|        6 | Daniel James      |      15 |   38 | 800000 |      2 | 6.0    |
+|        7 | Angel Gomes       |      19 |   32 | 800000 |      2 | 5.7    |
+|        8 | Anthony Martial   |      23 |   35 | 500000 |      2 | 5.9    |
+|        9 | Brandon Williams  |      25 |   35 | 500000 |      2 | 5.6    |
+|       10 | Scott McTominay   |      15 |   36 | 900000 |      2 | 5.9    |
+|       11 | Andreas Pereira   |       7 |   37 | 900000 |      3 | 5.9    |
++----------+-------------------+---------+------+--------+--------+--------+
+11 rows in set (0.00 sec)
+
