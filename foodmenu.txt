@@ -1,0 +1,103 @@
+
+mysql> select * from Menu;
++----+---------+-------------+
+| ID | name    | description |
++----+---------+-------------+
+|  1 | Pizza   | very good   |
+|  2 | Juice   | cool        |
+|  3 | Noodle  | delicious   |
+|  4 | Burgers | delicious   |
+|  5 | Coffee  | very good   |
++----+---------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from Food;
++--------+---------------------+-------+---------+
+| foodID | name                | price | menu_id |
++--------+---------------------+-------+---------+
+|      1 | Chicken pizza       | 2500  |       1 |
+|      2 | Baked Ziti          | 3000  |       1 |
+|      3 | Homemade pizza      | 3000  |       1 |
+|      4 | Orange juice        | 1500  |       2 |
+|      5 | Cucumber juice      | 1500  |       2 |
+|      6 | Carrot-orange juice | 2000  |       2 |
+|      7 | Pumpkin juice       | 2000  |       2 |
+|      8 | Fried Noodle        | 2500  |       3 |
+|      9 | Shan Noodle         | 1500  |       3 |
+|     10 | Monhinga            | 1000  |       3 |
+|     11 | Noodle soup         | 1800  |       3 |
+|     12 | Strawberry juice    | 1800  |       2 |
+|     13 | Avocado juice       | 1800  |       2 |
+|     14 | Espresso            | 2800  |       5 |
+|     15 | Green Tea           | 1800  |       5 |
++--------+---------------------+-------+---------+
+15 rows in set (0.12 sec)
+
+
+
+mysql> select * from Ordered;
++-----+------------+------+---------+-------+------------+
+| Oid | sale_date  | qty  | food_id | price | totalprice |
++-----+------------+------+---------+-------+------------+
+|   1 | 2018-01-05 |    2 |       1 |  2500 |       5000 |
+|   2 | 2019-07-15 |    3 |       2 |  3000 |       9000 |
+|   3 | 2020-07-05 |    4 |       4 |  1500 |       6000 |
+|   4 | 2020-04-05 |    5 |      11 |  1800 |       9000 |
+|   5 | 2020-05-17 |    3 |       9 |  1500 |       4500 |
+|   6 | 2018-06-20 |    3 |       8 |  2500 |       7500 |
+|   7 | 2018-11-21 |    4 |       3 |  3000 |      12000 |
+|   8 | 2019-12-30 |    5 |      10 |  1000 |       5000 |
+|   9 | 2019-09-19 |    5 |      14 |  2800 |      14000 |
+|  10 | 2020-09-18 |    6 |      12 |  1800 |      10800 |
+|  11 | 2018-01-05 |    3 |       1 |  2500 |       7500 |
++-----+------------+------+---------+-------+------------+
+11 rows in set (0.00 sec)
+
+
+mysql> select Food.name,Ordered.qty,Ordered.totalprice from Food,Ordered where Food.foodID=Ordered.food_id and Ordered.qty in(select min(qty) from Ordered);
++---------------+------+------------+
+| name          | qty  | totalprice |
++---------------+------+------------+
+| Chicken pizza |    2 |       5000 |
++---------------+------+------------+
+1 row in set (0.01 sec)
+
+mysql> select Food.name,Ordered.qty,Ordered.totalprice from Food,Ordered where Food.foodID=Ordered.food_id and Ordered.qty in(select max(qty) from Ordered);
++------------------+------+------------+
+| name             | qty  | totalprice |
++------------------+------+------------+
+| Strawberry juice |    6 |      10800 |
++------------------+------+------------+
+1 row in set (0.00 sec)
+
+
+mysql> select sale_date,totalprice from Ordered where sale_date between '2018-1-5' and '2019-12-30';
++------------+------------+
+| sale_date  | totalprice |
++------------+------------+
+| 2018-01-05 |       5000 |
+| 2019-07-15 |       9000 |
+| 2018-06-20 |       7500 |
+| 2018-11-21 |      12000 |
+| 2019-12-30 |       5000 |
+| 2019-09-19 |      14000 |
++------------+------------+
+6 rows in set (0.04 sec)
+
+mysql> select sale_date,sum(totalprice)as sale_amount from Ordered group by sale_date;
++------------+-------------+
+| sale_date  | sale_amount |
++------------+-------------+
+| 2018-01-05 |       12500 |
+| 2019-07-15 |        9000 |
+| 2020-07-05 |        6000 |
+| 2020-04-05 |        9000 |
+| 2020-05-17 |        4500 |
+| 2018-06-20 |        7500 |
+| 2018-11-21 |       12000 |
+| 2019-12-30 |        5000 |
+| 2019-09-19 |       14000 |
+| 2020-09-18 |       10800 |
++------------+-------------+
+10 rows in set (0.00 sec)
+
